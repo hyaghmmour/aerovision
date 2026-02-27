@@ -22,39 +22,39 @@ interface Feature {
 const features: Feature[] = [
   {
     icon: Speaker,
-    title: "Concert-Grade Audio",
+    title: "Live Event AV Systems",
     description:
-      "Professional sound systems designed for crystal-clear audio at any venue size, from intimate gatherings to arenas.",
+      "Professional sound reinforcement, microphone systems, and concert-grade audio engineered for crystal-clear delivery at any venue size.",
   },
   {
     icon: Monitor,
-    title: "4K LED Video Walls",
+    title: "LED Displays & Projection",
     description:
-      "High-resolution LED displays and projection mapping that transform any space into a visual masterpiece.",
+      "High-resolution LED video walls, projection mapping, and digital signage that transform any space into a visual experience.",
   },
   {
     icon: Lightbulb,
-    title: "Intelligent Lighting",
+    title: "Stage Lighting Design",
     description:
-      "Programmable stage lighting and atmospheric design that sets the mood and elevates every moment.",
-  },
-  {
-    icon: Video,
-    title: "Live Streaming",
-    description:
-      "Multi-camera broadcast production and live streaming to reach audiences anywhere in the world.",
+      "Programmable intelligent lighting, atmospheric design, and stage effects that set the mood and elevate every moment.",
   },
   {
     icon: Wifi,
-    title: "IT Infrastructure",
+    title: "Network & Event IT Solutions",
     description:
-      "Enterprise-grade networking, redundant systems, and on-site technical support for seamless operations.",
+      "Enterprise-grade networking, Wi-Fi deployment, redundant systems, and on-site technical support for seamless operations.",
+  },
+  {
+    icon: Video,
+    title: "Video & Livestream Production",
+    description:
+      "Multi-camera broadcast production, live streaming, and hybrid event solutions to reach audiences anywhere in the world.",
   },
   {
     icon: Clapperboard,
-    title: "Media Production",
+    title: "Content & Media Creation",
     description:
-      "End-to-end video production, professional photography, and post-production that captures every detail.",
+      "End-to-end video production, professional photography, post-production editing, and branded content that captures every detail.",
   },
 ];
 
@@ -76,9 +76,9 @@ export function FeaturesSection() {
           )}
         >
           <h2 className="text-2xl font-bold leading-snug tracking-tight sm:text-3xl md:text-5xl">
-            We deliver excellence,{" "}
+            Our capabilities,{" "}
             <span className="font-light text-muted-foreground">
-              with the best equipment and service
+              audiovisual, IT, and media production
             </span>
           </h2>
         </div>

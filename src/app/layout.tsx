@@ -15,9 +15,9 @@ const generalSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "AeroVision | AV & Event Production",
+  title: "AeroVision LLC | Audiovisual • IT • Media Production Solutions",
   description:
-    "Premier audiovisual and event production company in the DMV area.",
+    "AeroVision LLC provides audiovisual production, IT & technology services, and media production solutions serving Washington DC, Maryland, and Virginia.",
 };
 
 export default function RootLayout({

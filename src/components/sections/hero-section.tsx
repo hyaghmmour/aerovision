@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 
 const stats = [
   { value: "500+", label: "Events produced\nannually" },
-  { value: "315", label: "Projects completed\nworldwide" },
-  { value: "120K", label: "Attendees reached\nacross events" },
+  { value: "315", label: "Projects completed\nacross the DMV" },
+  { value: "50+", label: "Corporate & government\nclients served" },
 ];
 
 export function HeroSection() {
@@ -46,7 +46,7 @@ export function HeroSection() {
             {/* Content overlay — bottom left */}
             <div className="absolute bottom-0 left-0 flex flex-col justify-end p-6 sm:right-[40%] sm:p-8 md:p-12">
               <p className="text-xs font-medium text-white/70 sm:text-sm">
-                #1 AV Production Company in the DMV
+                Audiovisual &bull; IT &bull; Media Production Solutions
               </p>
               <h1 className="mt-3 text-3xl font-bold leading-[1.05] text-white sm:mt-4 sm:text-4xl md:text-6xl lg:text-[4.5rem]">
                 Elevating
@@ -55,6 +55,9 @@ export function HeroSection() {
                 <br />
                 Technology
               </h1>
+              <p className="mt-3 text-xs font-medium text-white/60 sm:mt-4 sm:text-sm">
+                Serving Washington DC &bull; Maryland &bull; Virginia
+              </p>
               <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8 sm:gap-8">
                 <Button
                   asChild
@@ -62,7 +65,7 @@ export function HeroSection() {
                   className="h-auto gap-2 p-0 text-sm font-semibold text-white hover:bg-transparent hover:text-white/80"
                 >
                   <a href="#contact">
-                    Get in touch
+                    Request a Quote
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>
@@ -71,8 +74,8 @@ export function HeroSection() {
                   variant="ghost"
                   className="h-auto gap-2 p-0 text-sm font-semibold text-white hover:bg-transparent hover:text-white/80"
                 >
-                  <a href="#services">
-                    Our services
+                  <a href="#contact">
+                    Schedule a Consultation
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>

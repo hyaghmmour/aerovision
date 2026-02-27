@@ -3,13 +3,13 @@ import { Separator } from "@/components/ui/separator";
 
 const links = {
   Services: [
-    "Live Production",
-    "Sound Systems",
-    "Lighting Design",
-    "LED Walls",
-    "Streaming",
+    "Audiovisual Production",
+    "IT & Technology Services",
+    "Media Production",
+    "Live Streaming",
+    "Event IT Solutions",
   ],
-  Company: ["About", "Portfolio", "Careers", "Blog", "Contact"],
+  Company: ["About Us", "Industries", "Careers", "Blog", "Contact"],
   Resources: ["Case Studies", "Equipment List", "FAQ", "Support", "Partners"],
 };
 
@@ -27,8 +27,8 @@ export function Footer() {
               </span>
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Premier audiovisual and event production company serving the DMV
-              area and beyond.
+              Audiovisual, IT, and media production solutions serving
+              Washington DC, Maryland, and Virginia.
             </p>
           </div>
 

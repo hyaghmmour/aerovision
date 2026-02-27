@@ -10,35 +10,35 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const reasons = [
   {
-    icon: Shield,
-    title: "Trusted by Industry Leaders.",
-    description:
-      "Marriott, Hilton, the World Bank, and the Smithsonian trust us to deliver flawless productions for their highest-profile events.",
-    cta: "See Our Clients",
-    image: "/hero-bg.jpg",
-  },
-  {
-    icon: Zap,
-    title: "Cutting-Edge Technology.",
-    description:
-      "From 4K LED walls to spatial audio and real-time streaming — we bring the latest AV innovations to every event.",
-    cta: "Explore Equipment",
-    image: "/hero-2.jpg",
-  },
-  {
     icon: Users,
-    title: "Dedicated Production Crews.",
+    title: "Experienced AV & IT Professionals",
     description:
-      "Every event gets a dedicated team of engineers, directors, and technicians who manage every detail from load-in to wrap.",
+      "Our team brings years of hands-on experience in audiovisual engineering, IT infrastructure, and media production to every project.",
     cta: "Meet the Team",
     image: "/hero-bg.jpg",
   },
   {
-    icon: Award,
-    title: "500+ Events Delivered.",
+    icon: Shield,
+    title: "One Partner for Technology & Media",
     description:
-      "With hundreds of successful productions across the DMV area, our track record speaks for itself.",
-    cta: "View Portfolio",
+      "From AV production and IT solutions to video and livestreaming — we offer a single, unified partner for all your technology needs.",
+    cta: "View Services",
+    image: "/hero-2.jpg",
+  },
+  {
+    icon: Award,
+    title: "Corporate & Government Events",
+    description:
+      "We specialize in high-profile corporate conferences, government summits, embassy events, and association galas across the DMV.",
+    cta: "See Our Work",
+    image: "/hero-bg.jpg",
+  },
+  {
+    icon: Zap,
+    title: "Reliable & Scalable Solutions",
+    description:
+      "Whether it's an intimate boardroom meeting or a 10,000-person convention, our solutions scale to match your event's demands.",
+    cta: "Get a Quote",
     image: "/hero-2.jpg",
   },
 ];
@@ -65,13 +65,13 @@ export function WhyChooseUsSection() {
             Why Choose Us
           </Badge>
           <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-            The DMV&apos;s Premier
+            Why Choose
             <br />
-            AV Production Partner
+            AeroVision
           </h2>
           <p className="mt-4 text-sm text-muted-foreground sm:text-base">
-            We combine expert teams, cutting-edge technology, and a proven track
-            record to deliver events that exceed expectations.
+            We combine experienced professionals, comprehensive technology solutions,
+            and a proven track record to deliver events that exceed expectations.
           </p>
         </div>
 

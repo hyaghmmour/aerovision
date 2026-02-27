@@ -21,19 +21,19 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "(202) 555-0180",
-    href: "tel:+12025550180",
+    value: "(202) 555-1234",
+    href: "tel:+12025551234",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@aerovision.com",
-    href: "mailto:hello@aerovision.com",
+    value: "info@aerovision.com",
+    href: "mailto:info@aerovision.com",
   },
   {
     icon: MapPin,
-    label: "Office",
-    value: "Washington, DC Metro Area",
+    label: "Service Area",
+    value: "Washington DC • Maryland • Virginia",
     href: "#",
   },
   {
@@ -67,13 +67,13 @@ export function ContactSection() {
               Contact Us
             </Badge>
             <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
-              Let&apos;s bring your
+              Let&apos;s Build Your
               <br />
-              event to life
+              Next Experience
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Tell us about your upcoming event and our team will get back to you
-              within 24 hours with a custom proposal.
+              Contact us today to get started. Tell us about your upcoming event
+              and our team will get back to you within 24 hours with a custom proposal.
             </p>
 
             {/* Contact details */}

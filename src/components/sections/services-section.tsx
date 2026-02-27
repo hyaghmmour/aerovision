@@ -10,22 +10,20 @@ import { Card, CardContent } from "@/components/ui/card";
 const services = [
   {
     number: "01",
-    title: "Audio Visual Production",
+    title: "Audiovisual Production",
+    description: "Live events & AV systems",
     link: "#",
   },
   {
     number: "02",
-    title: "Live Event Management",
+    title: "IT & Technology Services",
+    description: "Network & event IT solutions",
     link: "#",
   },
   {
     number: "03",
-    title: "Media & Content Creation",
-    link: "#",
-  },
-  {
-    number: "04",
-    title: "IT & Technical Services",
+    title: "Media Production",
+    description: "Video & livestream production",
     link: "#",
   },
 ];
@@ -50,14 +48,14 @@ export function ServicesSection() {
           {/* Left */}
           <div className="max-w-md">
             <h2 className="text-2xl font-bold leading-snug tracking-tight sm:text-3xl md:text-5xl">
-              Trusted service,{" "}
+              Our services,{" "}
               <span className="font-light text-muted-foreground">
-                for your various needs
+                one partner for all your technology needs
               </span>
             </h2>
             <Button asChild className="mt-6 rounded-full sm:mt-8">
               <a href="#contact">
-                Get in touch
+                Request a Quote
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </Button>
@@ -78,7 +76,7 @@ export function ServicesSection() {
         <div
           ref={grid.ref}
           className={cn(
-            "mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:mt-14",
+            "mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5 md:mt-14",
             "reveal-stagger",
             grid.isVisible && "revealed"
           )}
@@ -96,6 +94,11 @@ export function ServicesSection() {
                 <h3 className="mt-2 text-base font-bold sm:mt-3 sm:text-lg">
                   {service.title}
                 </h3>
+                {"description" in service && (
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {service.description}
+                  </p>
+                )}
                 <a
                   href={service.link}
                   className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-foreground underline decoration-foreground/20 underline-offset-4 transition-colors hover:decoration-foreground sm:mt-3"

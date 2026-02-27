@@ -15,9 +15,9 @@ import { Separator } from "@/components/ui/separator";
 
 const navLinks = [
   { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
+  { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
+  { label: "Industries", href: "#industries" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -48,7 +48,7 @@ export function Navbar() {
 
         {/* Right side — desktop */}
         <Button asChild className="hidden rounded-full md:inline-flex">
-          <a href="#contact">Get in touch</a>
+          <a href="#contact">Request a Quote</a>
         </Button>
 
         {/* Mobile menu */}
@@ -86,7 +86,7 @@ export function Navbar() {
             <div className="mt-auto px-4 pb-4">
               <SheetClose asChild>
                 <Button asChild className="w-full rounded-full">
-                  <a href="#contact">Get a Quote</a>
+                  <a href="#contact">Request a Quote</a>
                 </Button>
               </SheetClose>
             </div>
