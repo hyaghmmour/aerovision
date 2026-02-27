@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #ffffff;
+  --color-foreground: #0F172A;
+  --color-accent: #2B2C7C;
+  --color-accent-light: #EAEAF4;
+  --color-accent-dark: #1F2060;
+  --color-muted: #F8FAFC;
+  --color-muted-foreground: #64748B;
+  --color-border: #E2E8F0;
+  --color-warm: #FFF8ED;
+  --color-warm-dark: #F59E0B;
+  --color-pink: #FDE8F0;
+  --color-purple: #EDE9FE;
+  --color-lime: #D4F53E;
+  --font-sans: var(--font-satoshi);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Scroll reveal */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-fade-up.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-stagger.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--reveal-index, 0) * 100ms);
+}
