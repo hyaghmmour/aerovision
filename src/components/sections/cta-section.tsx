@@ -28,16 +28,16 @@ export function CtaSection() {
           section.isVisible && "revealed"
         )}
       >
-        <div className="overflow-hidden rounded-2xl bg-lime sm:rounded-3xl">
+        <div className="overflow-hidden rounded-2xl bg-accent-light sm:rounded-3xl">
           <div className="flex flex-col lg:flex-row">
             {/* Left — image */}
-            <div className="relative flex flex-1 items-end justify-center pt-8 sm:pt-12 lg:pt-0">
-              <div className="relative h-[280px] w-[220px] sm:h-[360px] sm:w-[280px] lg:h-[480px] lg:w-[300px]">
+            <div className="relative flex flex-1 items-center justify-center p-6 sm:p-8 lg:p-12">
+              <div className="relative aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl">
                 <Image
                   src="/hero-2.jpg"
                   alt="AeroVision event management"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
                 />
               </div>
             </div>

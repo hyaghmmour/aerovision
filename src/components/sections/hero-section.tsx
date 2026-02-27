@@ -1,11 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Play, Monitor, Users, Star } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+
+const stats = [
+  { value: "500+", label: "Events produced\nannually" },
+  { value: "315", label: "Projects completed\nworldwide" },
+  { value: "120K", label: "Attendees reached\nacross events" },
+];
 
 export function HeroSection() {
   const hero = useScrollReveal<HTMLDivElement>({ threshold: 0.05 });
@@ -15,132 +20,127 @@ export function HeroSection() {
       <div
         ref={hero.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-4 pt-10 sm:px-6 md:pt-20",
+          "reveal-fade-up relative mx-auto max-w-[1400px] px-4 pt-4 sm:px-5 sm:pt-6",
           hero.isVisible && "revealed"
         )}
       >
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-          {/* Left content */}
-          <div className="flex-1">
-            {/* Badge */}
-            <Badge
-              variant="secondary"
-              className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
-            >
-              <Monitor className="h-3.5 w-3.5" />
-              AV Solutions for Every Event & Goal
-            </Badge>
+        {/* Hero image with L-shaped cutout */}
+        <div
+          className="relative"
+          style={{ height: "clamp(480px, 75vh, 720px)" }}
+        >
+          {/* Image + overlays */}
+          <div className="absolute inset-0 overflow-hidden rounded-2xl">
+            <Image
+              src="/hero-bg.jpg"
+              alt="Live event production"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/35" />
 
-            {/* Heading */}
-            <h1 className="mt-6 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem]">
-              Elevate Your{" "}
-              <span className="relative inline-block">
-                Events
-                <svg
-                  className="absolute -bottom-1 left-0 w-full"
-                  viewBox="0 0 200 12"
-                  fill="none"
+            {/* White cutout — bottom right (hidden on mobile) */}
+            <div className="absolute bottom-0 right-0 hidden rounded-tl-2xl rounded-br-2xl bg-background sm:block sm:h-[120px] sm:w-[40%] md:h-[140px] md:w-[45%]" />
+
+            {/* Content overlay — bottom left */}
+            <div className="absolute bottom-0 left-0 flex flex-col justify-end p-6 sm:right-[40%] sm:p-8 md:p-12">
+              <p className="text-xs font-medium text-white/70 sm:text-sm">
+                #1 AV Production Company in the DMV
+              </p>
+              <h1 className="mt-3 text-3xl font-bold leading-[1.05] text-white sm:mt-4 sm:text-4xl md:text-6xl lg:text-[4.5rem]">
+                Elevating
+                <br />
+                Events Through
+                <br />
+                Technology
+              </h1>
+              <div className="mt-6 flex flex-wrap items-center gap-4 sm:mt-8 sm:gap-8">
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="h-auto gap-2 p-0 text-sm font-semibold text-white hover:bg-transparent hover:text-white/80"
                 >
-                  <path
-                    d="M2 8 C50 2, 150 2, 198 8"
-                    stroke="#2B2C7C"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </span>{" "}
-              with Professional AV Production
-            </h1>
-
-            {/* Description */}
-            <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
-              Transform your conferences, galas, and corporate events with
-              cutting-edge audiovisual technology, expert production teams, and
-              seamless event execution in the DMV area.
-            </p>
-
-            {/* CTAs */}
-            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-              <Button asChild size="lg" className="rounded-full">
-                <a href="#contact">Start Your Project</a>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full">
-                <a href="#how-it-works">Explore Our Process</a>
-              </Button>
+                  <a href="#contact">
+                    Get in touch
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="ghost"
+                  className="h-auto gap-2 p-0 text-sm font-semibold text-white hover:bg-transparent hover:text-white/80"
+                >
+                  <a href="#services">
+                    Our services
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
-            {/* Social proof */}
-            <div className="mt-8 flex items-center gap-4 sm:mt-10">
-              <div className="flex -space-x-2">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-gradient-to-br from-primary/40 to-primary text-xs font-bold text-white"
-                  >
-                    {["JM", "SK", "AR"][i]}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-3.5 w-3.5 fill-warm-dark text-warm-dark"
-                    />
-                  ))}
+            {/* Floating card — top right (desktop only) */}
+            <div className="absolute right-6 top-6 hidden w-56 overflow-hidden rounded-2xl bg-white/10 backdrop-blur-xl md:right-8 md:top-8 md:block md:w-60">
+              <div className="relative h-28 w-full">
+                <Image
+                  src="/hero-2.jpg"
+                  alt="Recent project"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute right-3 top-3 flex gap-1">
+                  <span className="h-1 w-1 rounded-full bg-white/60" />
+                  <span className="h-1 w-1 rounded-full bg-white/60" />
+                  <span className="h-1 w-1 rounded-full bg-white/60" />
                 </div>
-                <p className="text-sm font-semibold text-foreground">
-                  500+{" "}
-                  <span className="font-normal text-muted-foreground">
-                    Events produced
-                  </span>
+              </div>
+              <div className="flex items-center gap-3 p-4">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15">
+                  <ArrowUpRight className="h-4 w-4 text-white" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-white">
+                    Discover Our
+                  </p>
+                  <p className="text-xs text-white/60">Recent Project</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats bar — in the bottom-right cutout (desktop) */}
+          <div className="absolute bottom-0 right-0 hidden items-start gap-8 px-6 py-8 sm:flex sm:h-[120px] sm:w-[40%] md:h-[140px] md:w-[45%] md:gap-10 md:px-8 md:py-10 lg:gap-12">
+            {stats.map((stat, i) => (
+              <div key={stat.label} className="flex items-start gap-6 md:gap-8">
+                {i > 0 && <div className="h-12 w-px bg-border md:h-14" />}
+                <div>
+                  <p className="text-2xl font-bold tracking-tight text-foreground md:text-3xl lg:text-4xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 whitespace-pre-line text-[10px] leading-relaxed text-muted-foreground md:text-xs">
+                    {stat.label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats — mobile (below hero) */}
+        <div className="mt-6 flex items-start justify-between gap-4 sm:hidden">
+          {stats.map((stat, i) => (
+            <div key={stat.label} className="flex items-start gap-4">
+              {i > 0 && <div className="h-12 w-px bg-border" />}
+              <div>
+                <p className="text-2xl font-bold tracking-tight text-foreground">
+                  {stat.value}
+                </p>
+                <p className="mt-1 whitespace-pre-line text-[10px] leading-relaxed text-muted-foreground">
+                  {stat.label}
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Right — hero image */}
-          <div className="relative flex-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl lg:aspect-auto lg:h-auto">
-              <Image
-                src="/hero-bg.jpg"
-                alt="Live event production"
-                width={640}
-                height={520}
-                className="h-auto w-full object-cover"
-                priority
-              />
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-black/10" />
-
-              {/* Floating badge — top */}
-              <Badge
-                variant="secondary"
-                className="absolute left-3 top-3 gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-semibold backdrop-blur-sm sm:left-4 sm:top-4"
-              >
-                <div className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500">
-                  <Play className="h-2.5 w-2.5 fill-white text-white" />
-                </div>
-                Live Production
-              </Badge>
-
-              {/* Floating badge — top right */}
-              <Badge className="absolute right-3 top-3 rounded-full bg-primary/90 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm sm:right-4 sm:top-4">
-                DMV&apos;s #1 AV Team
-              </Badge>
-            </div>
-
-            {/* Bottom bar */}
-            <div className="absolute -bottom-4 left-4 right-4 flex items-center gap-3 rounded-xl bg-background px-4 py-3 shadow-lg shadow-black/5 sm:-bottom-5 sm:left-6 sm:right-6 sm:rounded-2xl sm:px-5 sm:py-3.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
-                <Users className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-xs font-medium text-muted-foreground">
-                Trusted by 120K+ attendees across events
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
