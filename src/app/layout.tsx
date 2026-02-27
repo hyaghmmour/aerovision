@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const satoshi = localFont({
+const generalSans = localFont({
   src: [
     {
-      path: "../../public/fonts/Satoshi-Variable.woff2",
-      weight: "300 900",
+      path: "../../public/fonts/GeneralSans-Variable.woff2",
+      weight: "200 700",
       style: "normal",
     },
   ],
-  variable: "--font-satoshi",
+  variable: "--font-general-sans",
   display: "swap",
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${satoshi.variable} antialiased`}>{children}</body>
+      <body className={`${generalSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
