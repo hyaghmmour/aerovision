@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Smartphone,
-  CheckCircle2,
-  ArrowRight,
-} from "lucide-react";
+import { Smartphone, CheckCircle2, ArrowRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const highlights = [
   "Real-time event monitoring",
@@ -22,19 +20,19 @@ export function CtaSection() {
   const section = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-20 md:py-32">
       <div
         ref={section.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6",
+          "reveal-fade-up mx-auto max-w-7xl px-4 sm:px-6",
           section.isVisible && "revealed"
         )}
       >
-        <div className="overflow-hidden rounded-3xl bg-lime">
+        <div className="overflow-hidden rounded-2xl bg-lime sm:rounded-3xl">
           <div className="flex flex-col lg:flex-row">
             {/* Left — image */}
-            <div className="relative flex flex-1 items-end justify-center pt-12 lg:pt-0">
-              <div className="relative h-[400px] w-[300px] lg:h-[480px]">
+            <div className="relative flex flex-1 items-end justify-center pt-8 sm:pt-12 lg:pt-0">
+              <div className="relative h-[280px] w-[220px] sm:h-[360px] sm:w-[280px] lg:h-[480px] lg:w-[300px]">
                 <Image
                   src="/hero-2.jpg"
                   alt="AeroVision event management"
@@ -45,15 +43,16 @@ export function CtaSection() {
             </div>
 
             {/* Right — content */}
-            <div className="flex flex-1 flex-col justify-center p-8 md:p-12 lg:p-16">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5">
+            <div className="flex flex-1 flex-col justify-center p-6 sm:p-8 md:p-12 lg:p-16">
+              <Badge
+                variant="secondary"
+                className="w-fit gap-2 rounded-full bg-foreground/10 px-4 py-1.5 text-xs font-semibold"
+              >
                 <Smartphone className="h-3.5 w-3.5" />
-                <span className="text-xs font-semibold">
-                  Event Control Hub
-                </span>
-              </div>
+                Event Control Hub
+              </Badge>
 
-              <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
+              <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
                 Manage Events
                 <br />
                 From Anywhere
@@ -66,7 +65,7 @@ export function CtaSection() {
               </p>
 
               {/* Feature grid */}
-              <div className="mt-8 grid grid-cols-2 gap-3">
+              <div className="mt-6 grid grid-cols-1 gap-2.5 sm:mt-8 sm:grid-cols-2 sm:gap-3">
                 {highlights.map((h) => (
                   <div key={h} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-foreground" />
@@ -75,13 +74,12 @@ export function CtaSection() {
                 ))}
               </div>
 
-              <a
-                href="#contact"
-                className="mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
-              >
-                Learn More
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <Button asChild className="mt-6 w-fit rounded-full sm:mt-8">
+                <a href="#contact">
+                  Learn More
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>

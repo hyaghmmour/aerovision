@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Layers, ArrowRight } from "lucide-react";
+import { Layers, ArrowRight, Check } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const tiers = [
   {
@@ -52,43 +55,40 @@ export function ServicesSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="services" className="bg-muted py-24 md:py-32">
+    <section id="services" className="bg-muted py-20 md:py-32">
       <div
         ref={section.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6",
+          "reveal-fade-up mx-auto max-w-7xl px-4 sm:px-6",
           section.isVisible && "revealed"
         )}
       >
         {/* Header */}
         <div className="mx-auto max-w-xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-1.5">
-            <Layers className="h-3.5 w-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent">
-              Service Tiers
-            </span>
-          </div>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
+          <Badge
+            variant="secondary"
+            className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
+          >
+            <Layers className="h-3.5 w-3.5" />
+            Service Tiers
+          </Badge>
+          <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
             AV Packages for Every Event
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             Choose your tier and scale up as your event demands grow — from
             boardroom meetings to arena-scale productions.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="mt-12 flex items-center justify-center gap-2">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-2 sm:mt-12">
           {tiers.map((tier, i) => (
-            <button
+            <Button
               key={tier.tag}
+              variant={active === i ? "default" : "outline"}
+              className="rounded-full"
               onClick={() => setActive(i)}
-              className={cn(
-                "flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors",
-                active === i
-                  ? "bg-accent text-white"
-                  : "border border-border bg-white text-foreground hover:bg-muted"
-              )}
             >
               <span
                 className={cn(
@@ -101,55 +101,45 @@ export function ServicesSection() {
                 {tier.tag}
               </span>
               {tier.label}
-            </button>
+            </Button>
           ))}
         </div>
 
         {/* Active tier content */}
-        <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-white">
+        <Card className="mt-8 gap-0 overflow-hidden rounded-2xl border-border p-0 sm:mt-10">
           <div className="flex flex-col md:flex-row">
             {/* Left — info */}
-            <div className="flex-1 p-8 md:p-12">
-              <span className="inline-block rounded-full bg-accent-light px-3 py-1 text-xs font-semibold text-accent">
+            <CardContent className="flex-1 p-6 sm:p-8 md:p-12">
+              <Badge
+                variant="secondary"
+                className="rounded-full bg-accent-light px-3 py-1 text-xs font-semibold text-primary"
+              >
                 {tiers[active].tag} — {tiers[active].label}
-              </span>
-              <h3 className="mt-4 text-2xl font-bold md:text-3xl">
+              </Badge>
+              <h3 className="mt-4 text-xl font-bold sm:text-2xl md:text-3xl">
                 {tiers[active].name}
               </h3>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground sm:mt-4">
                 {tiers[active].description}
               </p>
-              <a
-                href="#contact"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
-              >
-                Get Started
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
+              <Button asChild className="mt-6 rounded-full sm:mt-8">
+                <a href="#contact">
+                  Get Started
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Button>
+            </CardContent>
 
             {/* Right — features list */}
-            <div className="flex flex-1 flex-col justify-center border-t border-border bg-muted p-8 md:border-l md:border-t-0 md:p-12">
+            <div className="flex flex-1 flex-col justify-center border-t border-border bg-muted p-6 sm:p-8 md:border-l md:border-t-0 md:p-12">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 What&apos;s included
               </p>
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-5 space-y-4 sm:mt-6">
                 {tiers[active].features.map((f) => (
                   <li key={f} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent">
-                      <svg
-                        className="h-3 w-3 text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary">
+                      <Check className="h-3 w-3 text-white" />
                     </div>
                     <span className="text-sm font-medium">{f}</span>
                   </li>
@@ -157,7 +147,7 @@ export function ServicesSection() {
               </ul>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Play, Monitor, Users, Star } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export function HeroSection() {
   const hero = useScrollReveal<HTMLDivElement>({ threshold: 0.05 });
@@ -13,23 +15,24 @@ export function HeroSection() {
       <div
         ref={hero.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6 pt-12 md:pt-20",
+          "reveal-fade-up mx-auto max-w-7xl px-4 pt-10 sm:px-6 md:pt-20",
           hero.isVisible && "revealed"
         )}
       >
-        <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
           {/* Left content */}
           <div className="flex-1">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-1.5">
-              <Monitor className="h-3.5 w-3.5 text-accent" />
-              <span className="text-xs font-semibold text-accent">
-                AV Solutions for Every Event & Goal
-              </span>
-            </div>
+            <Badge
+              variant="secondary"
+              className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
+            >
+              <Monitor className="h-3.5 w-3.5" />
+              AV Solutions for Every Event & Goal
+            </Badge>
 
             {/* Heading */}
-            <h1 className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight md:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-6 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem]">
               Elevate Your{" "}
               <span className="relative inline-block">
                 Events
@@ -50,35 +53,29 @@ export function HeroSection() {
             </h1>
 
             {/* Description */}
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
               Transform your conferences, galas, and corporate events with
               cutting-edge audiovisual technology, expert production teams, and
               seamless event execution in the DMV area.
             </p>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="#contact"
-                className="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-dark"
-              >
-                Start Your Project
-              </a>
-              <a
-                href="#how-it-works"
-                className="flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
-              >
-                Explore Our Process
-              </a>
+            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
+              <Button asChild size="lg" className="rounded-full">
+                <a href="#contact">Start Your Project</a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full">
+                <a href="#how-it-works">Explore Our Process</a>
+              </Button>
             </div>
 
             {/* Social proof */}
-            <div className="mt-10 flex items-center gap-4">
+            <div className="mt-8 flex items-center gap-4 sm:mt-10">
               <div className="flex -space-x-2">
                 {[0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-accent/40 to-accent text-xs font-bold text-white"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-background bg-gradient-to-br from-primary/40 to-primary text-xs font-bold text-white"
                   >
                     {["JM", "SK", "AR"][i]}
                   </div>
@@ -105,7 +102,7 @@ export function HeroSection() {
 
           {/* Right — hero image */}
           <div className="relative flex-1">
-            <div className="relative overflow-hidden rounded-3xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:rounded-3xl lg:aspect-auto lg:h-auto">
               <Image
                 src="/hero-bg.jpg"
                 alt="Live event production"
@@ -118,24 +115,25 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-black/10" />
 
               {/* Floating badge — top */}
-              <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 backdrop-blur-sm">
+              <Badge
+                variant="secondary"
+                className="absolute left-3 top-3 gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-semibold backdrop-blur-sm sm:left-4 sm:top-4"
+              >
                 <div className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500">
                   <Play className="h-2.5 w-2.5 fill-white text-white" />
                 </div>
-                <span className="text-xs font-semibold">Live Production</span>
-              </div>
+                Live Production
+              </Badge>
 
               {/* Floating badge — top right */}
-              <div className="absolute right-4 top-4 rounded-full bg-accent/90 px-3 py-1.5 backdrop-blur-sm">
-                <span className="text-xs font-semibold text-white">
-                  DMV&apos;s #1 AV Team
-                </span>
-              </div>
+              <Badge className="absolute right-3 top-3 rounded-full bg-primary/90 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm sm:right-4 sm:top-4">
+                DMV&apos;s #1 AV Team
+              </Badge>
             </div>
 
             {/* Bottom bar */}
-            <div className="absolute -bottom-5 left-6 right-6 flex items-center gap-3 rounded-2xl bg-white px-5 py-3.5 shadow-lg shadow-black/5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent">
+            <div className="absolute -bottom-4 left-4 right-4 flex items-center gap-3 rounded-xl bg-background px-4 py-3 shadow-lg shadow-black/5 sm:-bottom-5 sm:left-6 sm:right-6 sm:rounded-2xl sm:px-5 sm:py-3.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
                 <Users className="h-4 w-4 text-white" />
               </div>
               <span className="text-xs font-medium text-muted-foreground">

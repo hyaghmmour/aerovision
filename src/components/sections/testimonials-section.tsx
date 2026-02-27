@@ -3,6 +3,8 @@
 import { Building2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 const venues = [
   { name: "Walter E. Washington Convention Center", city: "Washington, DC", logo: "/venues/convention-center.svg" },
@@ -27,45 +29,48 @@ export function PortfolioSection() {
   const section = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="portfolio" className="bg-muted py-24 md:py-32">
+    <section id="portfolio" className="bg-muted py-20 md:py-32">
       <div
         ref={section.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6",
+          "reveal-fade-up mx-auto max-w-7xl px-4 sm:px-6",
           section.isVisible && "revealed"
         )}
       >
         {/* Header */}
         <div className="mx-auto max-w-xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-1.5">
-            <Building2 className="h-3.5 w-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent">Portfolio</span>
-          </div>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
+          <Badge
+            variant="secondary"
+            className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
+          >
+            <Building2 className="h-3.5 w-3.5" />
+            Portfolio
+          </Badge>
+          <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
             Venues We&apos;ve Produced At
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             From intimate ballrooms to arena-scale convention centers — we&apos;ve
             delivered flawless AV productions at the DMV&apos;s top venues.
           </p>
         </div>
 
-        {/* 4×4 grid */}
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {/* Grid */}
+        <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           {venues.map((venue, i) => (
-            <div
+            <Card
               key={venue.name}
-              className="group flex flex-col items-center justify-center rounded-2xl border border-border bg-white p-6 text-center transition-all hover:border-foreground/20 hover:shadow-md"
+              className="group flex flex-col items-center justify-center gap-3 rounded-xl border-border p-4 text-center transition-all hover:border-foreground/20 hover:shadow-md sm:gap-4 sm:rounded-2xl sm:p-6"
               style={{ "--reveal-index": i } as React.CSSProperties}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={venue.logo}
                 alt={venue.name}
-                className="h-8 w-auto object-contain opacity-60 transition-opacity group-hover:opacity-100"
+                className="h-6 w-auto object-contain opacity-60 transition-opacity group-hover:opacity-100 sm:h-8"
               />
-              <p className="mt-4 text-xs text-muted-foreground">{venue.city}</p>
-            </div>
+              <p className="text-[10px] text-muted-foreground sm:text-xs">{venue.city}</p>
+            </Card>
           ))}
         </div>
       </div>

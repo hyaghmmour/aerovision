@@ -4,6 +4,9 @@ import Image from "next/image";
 import { Award, Shield, Zap, Users } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const reasons = [
   {
@@ -44,43 +47,44 @@ export function WhyChooseUsSection() {
   const section = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="about" className="py-24 md:py-32">
+    <section id="about" className="py-20 md:py-32">
       <div
         ref={section.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6",
+          "reveal-fade-up mx-auto max-w-7xl px-4 sm:px-6",
           section.isVisible && "revealed"
         )}
       >
         {/* Section header */}
         <div className="mx-auto max-w-xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-1.5">
-            <Award className="h-3.5 w-3.5 text-accent" />
-            <span className="text-xs font-semibold text-accent">
-              Why Choose Us
-            </span>
-          </div>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
+          <Badge
+            variant="secondary"
+            className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
+          >
+            <Award className="h-3.5 w-3.5" />
+            Why Choose Us
+          </Badge>
+          <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
             The DMV&apos;s Premier
             <br />
             AV Production Partner
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
+          <p className="mt-4 text-sm text-muted-foreground sm:text-base">
             We combine expert teams, cutting-edge technology, and a proven track
             record to deliver events that exceed expectations.
           </p>
         </div>
 
         {/* Cards */}
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
           {reasons.map((reason, i) => (
-            <div
+            <Card
               key={reason.title}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-lg"
+              className="group gap-0 overflow-hidden rounded-2xl border-border p-0 transition-shadow hover:shadow-lg"
               style={{ "--reveal-index": i } as React.CSSProperties}
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden">
+              <div className="relative h-40 overflow-hidden sm:h-44">
                 <Image
                   src={reason.image}
                   alt={reason.title}
@@ -90,29 +94,24 @@ export function WhyChooseUsSection() {
               </div>
 
               {/* Content */}
-              <div className="flex flex-1 flex-col p-5">
-                <div
-                  className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-white"
-                >
+              <CardContent className="flex flex-1 flex-col p-5">
+                <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
                   <reason.icon className="h-4 w-4" />
                 </div>
                 <h3 className="text-base font-bold">{reason.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {reason.description}
                 </p>
-                <a
-                  href="#"
-                  className={cn(
-                    "mt-5 inline-flex items-center justify-center rounded-full border px-4 py-2 text-xs font-semibold transition-colors",
-                    i === 0
-                      ? "border-accent bg-accent text-white hover:bg-accent-dark"
-                      : "border-border text-foreground hover:bg-muted"
-                  )}
+                <Button
+                  asChild
+                  variant={i === 0 ? "default" : "outline"}
+                  className="mt-5 rounded-full"
+                  size="sm"
                 >
-                  {reason.cta}
-                </a>
-              </div>
-            </div>
+                  <a href="#">{reason.cta}</a>
+                </Button>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

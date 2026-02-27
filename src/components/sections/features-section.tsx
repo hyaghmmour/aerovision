@@ -13,6 +13,9 @@ import {
 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
@@ -70,24 +73,25 @@ export function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="py-24 md:py-32">
+    <section id="features" className="py-20 md:py-32">
       <div
         ref={section.ref}
         className={cn(
-          "reveal-fade-up mx-auto max-w-7xl px-6",
+          "reveal-fade-up mx-auto max-w-7xl px-4 sm:px-6",
           section.isVisible && "revealed"
         )}
       >
         {/* Header row */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-4 sm:gap-6 md:flex-row md:items-end md:justify-between">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-4 py-1.5">
-              <Sparkles className="h-3.5 w-3.5 text-accent" />
-              <span className="text-xs font-semibold text-accent">
-                Premium Capabilities
-              </span>
-            </div>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl">
+            <Badge
+              variant="secondary"
+              className="gap-2 rounded-full bg-accent-light px-4 py-1.5 text-xs font-semibold text-primary"
+            >
+              <Sparkles className="h-3.5 w-3.5" />
+              Premium Capabilities
+            </Badge>
+            <h2 className="mt-5 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
               Everything You Need
               <br />
               for Flawless Events
@@ -103,18 +107,18 @@ export function FeaturesSection() {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="mt-12 flex gap-5 overflow-x-auto pb-4 scrollbar-hide"
+          className="mt-10 flex gap-4 overflow-x-auto pb-4 scrollbar-hide sm:mt-12 sm:gap-5"
           style={{ scrollSnapType: "x mandatory" }}
         >
           {features.map((feature) => (
-            <div
+            <Card
               key={feature.title}
-              className="w-[300px] flex-shrink-0 overflow-hidden rounded-2xl border border-border"
+              className="w-[260px] flex-shrink-0 gap-0 overflow-hidden rounded-2xl border-border p-0 sm:w-[300px]"
               style={{ scrollSnapAlign: "start" }}
             >
               {/* Colored image area */}
-              <div className={cn("relative h-48", feature.bg)}>
-                <div className="absolute inset-4 overflow-hidden rounded-xl">
+              <div className={cn("relative h-44 sm:h-48", feature.bg)}>
+                <div className="absolute inset-3 overflow-hidden rounded-xl sm:inset-4">
                   <Image
                     src={feature.image}
                     alt={feature.title}
@@ -124,34 +128,37 @@ export function FeaturesSection() {
                 </div>
               </div>
               {/* Text */}
-              <div className="p-5">
-                <h3 className="text-base font-bold">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <CardContent className="p-4 sm:p-5">
+                <h3 className="text-sm font-bold sm:text-base">{feature.title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                   {feature.description}
                 </p>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
         {/* Navigation */}
-        <div className="mt-6 flex items-center gap-4">
-          <button
+        <div className="mt-5 flex items-center gap-3 sm:mt-6 sm:gap-4">
+          <Button
+            variant="outline"
+            size="icon"
+            className="rounded-full"
             onClick={() => scroll("left")}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:bg-muted"
           >
             <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
+          </Button>
+          <Button
+            size="icon"
+            className="rounded-full"
             onClick={() => scroll("right")}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white transition-colors hover:bg-accent-dark"
           >
             <ChevronRight className="h-4 w-4" />
-          </button>
+          </Button>
           {/* Progress bar */}
           <div className="ml-4 h-1 flex-1 rounded-full bg-border">
             <div
-              className="h-1 rounded-full bg-accent transition-all duration-300"
+              className="h-1 rounded-full bg-primary transition-all duration-300"
               style={{ width: `${Math.max(30, scrollPos * 100)}%` }}
             />
           </div>
